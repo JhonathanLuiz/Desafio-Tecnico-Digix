@@ -19,7 +19,7 @@ CREATE TABLE Familia(
 	CONSTRAINT PK_IdFamilia PRIMARY KEY (IdFamilia),
 	CONSTRAINT FK_IdStatus FOREIGN KEY (IdStatus) REFERENCES FamiliaStatus(IdFamiliaStatus)
 )
-
+GO
 
 
 CREATE TABLE Dependente (
