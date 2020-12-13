@@ -1,0 +1,33 @@
+CREATE TABLE FamiliaStatus (
+	IdFamiliaStatus INT IDENTITY (1, 1) NOT NULL,
+	Descricao VARCHAR(MAX) NOT NULL,
+	CONSTRAINT PK_FamiliaStatus PRIMARY KEY (IdFamiliaStatus)
+)
+GO
+
+
+
+CREATE TABLE Familia(
+	IdFamilia INT IDENTITY (1, 1) NOT NULL,
+	IdStatus INT NOT NULL,
+	NomePretendente VARCHAR(MAX) NOT NULL,
+	DataNascPretendente DATE NOT NULL,
+	RendaPretendente MONEY NOT NULL,
+	NomeConjuge VARCHAR(MAX) NOT NULL,
+	DataNascConjuge DATE NOT NULL,
+	RendaConjuge MONEY NOT NULL,
+	CONSTRAINT PK_IdFamilia PRIMARY KEY (IdFamilia),
+	CONSTRAINT FK_IdStatus FOREIGN KEY (IdStatus) REFERENCES FamiliaStatus(IdFamiliaStatus)
+)
+
+
+
+CREATE TABLE Dependente (
+	IdDependente INT IDENTITY (1, 1) NOT NULL,
+	IdFamilia INT NOT NULL,
+	NomeDependente VARCHAR(MAX) NOT NULL,
+	DataNascDependente DATE NOT NULL,
+	CONSTRAINT PK_Dependente PRIMARY KEY (IdDependente),
+	CONSTRAINT FK_Familia FOREIGN KEY (IdFamilia) REFERENCES Familia(IdFamilia)
+)
+GO
